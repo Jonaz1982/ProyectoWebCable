@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cable - Resultado</title>
+	{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'cable/css/main.css' %}">
+	<meta charset="utf-8">
+</head>
+<body>
+	<div class= box-bg></div>
+	<div class=box-datos>
+		{% if user.is_authenticated %}
+			<p>
+            <pre>
+			Nombre: {{ user.nombre }}
+			Correo: {{ user.correo }}
+			Estado: {{ user.estado }}
+            </pre>
+            </p>
+		{% endif %}
+		</div>
+	</div>
+	<div class=box-seleccion>
+        <h1>Resultado</h1>
+        {% if busquedaCatalogo %}
+            {% for catalogo in busquedaCatalogo %}
+            <p>
+            <pre>
+                Ampacidad       :{{ catalogo.ampacidad }}
+                Material        :{{ catalogo.material }}
+                Tension C       :{{ catalogo.tension }}
+                Espesor Pant C  :{{ catalogo.espesorPantalla }}
+                Diametro Cab C  :{{ catalogo.diametroCable }}
+                CodCable        :{{ catalogo.codigoCable }}
+                Corriente C     :{{ catalogo.corriente }}
+            </pre>
+            </p>
+            {% endfor %}
+            </table>
+        {% else %}
+            <p>No se encontro en la busqueda.</p>
+        {% endif %}
+    <a href="{% url 'cable:main' %}">Inicio</a>
+    </div>
+</body>
+</html>

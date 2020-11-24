@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cable - Login</title>
+	{% load static %}
+	<link rel="stylesheet" type="text/css" href="{% static 'cable/css/login.css' %}">
+	<meta charset="utf-8">
+</head>
+<body>
+	<div class= box-bg></div>
+	<div class=bg-login-box>
+		<div class=login-box>
+			<h1>App Web Cable</h1>
+			{% if next %}
+				<form action="/login/?next={{next}}" method="POST" >
+			{%else%}
+				<form action="/login/" method="POST" >
+			{% endif %}
+        		{% csrf_token %}
+        		{{ form.as_p }}
+        		<input type="submit" value="Ingresar">
+                <a href="{% url 'cable:crearUsuarios' %}">Cargar Usuarios.</a>
+                <a href="{% url 'cable:crearCatalogo' %}">Cargar Catalogo.</a>
+      		</form>
+		</div>
+	</div>
+	<div class= box-link>
+		
+	</div>
+</body>
+</html>

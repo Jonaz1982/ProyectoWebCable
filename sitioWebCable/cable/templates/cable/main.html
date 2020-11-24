@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cable - Principal</title>
+	{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'cable/css/main.css' %}">
+	<meta charset="utf-8">
+</head>
+<body>
+	<div class= box-bg></div>
+	<div class=box-datos>
+		{% if user.is_authenticated %}
+			<p>
+            <pre>
+			Nombre: {{ user.nombre }}
+			Correo: {{ user.correo }}
+			Estado: {{ user.estado }}
+                        <a href="{% url 'cable:logout' %}">Salir.</a>
+            </pre>
+            </p>
+		{% endif %}
+
+		</div>
+	</div>
+	<div class=box-seleccion>
+        <h1>Seleccion</h1>
+				<form action="/" method="POST" >
+        		{% csrf_token %}
+        		{{ form.as_p }}
+        		<input type="submit" value="Calcular Seleccion">
+      		</form>
+    </div>
+</body>
+</html>
